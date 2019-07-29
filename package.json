@@ -1,0 +1,17 @@
+{
+  "name": "apollo-gql-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "christian john elmedo",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.7.2",
+    "graphql": "^14.4.2",
+    "mongoose": "^5.6.7"
+  }
+}
