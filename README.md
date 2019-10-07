@@ -1,10 +1,29 @@
 # apollo-gql-api
-GraphQL api using apollo server.
 
-Covered GraphQL
-    - Query
-        - cars: [Car!]
-        - car(_id: String) : Car
-        - manufacturers: [Manufacturer!]
-    - Mutation
-        - createCar(newCar: carInput) : Car
+## query
+
+```bash
+query {
+	cars{
+    model
+    manufacturer{
+      name
+    }
+  }
+}
+```
+
+## mutation
+
+```bash
+mutation{
+  createCar(newCar: {
+    model: "hilux 4x4 v2",
+    color: "red",
+    transmission: "automatic",
+    manufacturer: "toyota"
+  }){
+    model
+  }
+}
+```

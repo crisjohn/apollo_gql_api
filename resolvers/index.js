@@ -3,10 +3,7 @@ const models = require('../models');
 module.exports = {
     Query: {
         cars: async () => await models.cars.find({}),
-        car: async (root, args) => {
-            console.log(args)
-            return await models.cars.findOne(args);
-        },
+        car: async (root, args) => await models.cars.findOne(args),
         manufacturers: async () => await models.manufacturers.find({})
     },
     Mutation: {
@@ -21,16 +18,19 @@ module.exports = {
             }
             newCar.manufacturer = manufacture._id;
             return await models.cars.create(newCar);
+        },
+        createManufacturer: async (root, {newManufacture}) => {
+            const checkManufacture = await models.manufacturers.findOne({name: newManufacture.name});
+            if(checkManufacture) {
+                throw new Error('Manufacturer already exist.');
+            }
+            return await models.manufacturers.create(newManufacture);
         }
     },
     Car: {
-        manufacturer: async (car) => {
-            return await models.getManufacture(car.manufacturer)
-        }
+        manufacturer: async (car) => await models.getManufacture(car.manufacturer)
     },
     Manufacturer: {
-        cars: async (manufacture) => {
-            return await models.cars.find({ _id: { $in: manufacture.cars } })
-        }
+        cars: async (manufacture) => await models.cars.find({ _id: { $in: manufacture.cars } })
     }
 };

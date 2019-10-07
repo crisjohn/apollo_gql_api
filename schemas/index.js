@@ -24,6 +24,11 @@ module.exports = gql`
         manufacturer: String!
     }
 
+    input manufacturerInput {
+        name: String!
+        country: String!
+    }
+
     # root query
     type Query {
         cars: [Car!]
@@ -33,6 +38,7 @@ module.exports = gql`
     # root mutation
     type Mutation {
         createCar(newCar: carInput) : Car
+        createManufacturer(newManufacturer: manufacturerInput) : Manufacturer
     }
 
 `;
