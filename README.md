@@ -5,11 +5,11 @@
 ```bash
 query {
 	cars{
-    model
-    manufacturer{
-      name
-    }
-  }
+   		model
+    		manufacturer{
+      			name
+    		}
+  	}
 }
 ```
 
